@@ -141,13 +141,15 @@ const ProposalReveal = () => {
                 </div>
 
                 {showCelebration && (
-                  <div className="mt-8 animate-scale-in">
-                    <p className="font-romantic text-3xl text-gold animate-fade-up">
-                      She said Yes! 🎉💍
-                    </p>
-                    <p className="font-romantic text-xl text-blush mt-4 animate-fade-up" style={{ animationDelay: "0.5s" }}>
-                      Forever begins with you, Lilly ❤️
-                    </p>
+                  <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/95 animate-fade-in px-6">
+                    <div className="text-center space-y-8">
+                      <p className="font-romantic text-5xl text-gold animate-scale-in leading-tight">
+                        She said Yes! 🎉💍
+                      </p>
+                      <p className="font-romantic text-3xl text-blush animate-fade-up leading-relaxed" style={{ animationDelay: "0.5s" }}>
+                        Naa life story lo first page nundi last page varaku nuvve Lilly❤️
+                      </p>
+                    </div>
                   </div>
                 )}
 
