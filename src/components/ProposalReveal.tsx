@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import FloatingHearts from "./FloatingHearts";
+import ConfettiCelebration from "./ConfettiCelebration";
 
 const ProposalReveal = () => {
   const [isRevealed, setIsRevealed] = useState(false);
   const [showFinalText, setShowFinalText] = useState(false);
+  const [showCelebration, setShowCelebration] = useState(false);
   const [sparkles, setSparkles] = useState<Array<{ id: number; x: number; y: number }>>([]);
 
   useEffect(() => {
@@ -130,14 +132,30 @@ const ProposalReveal = () => {
                 <div className="divider-romantic my-8" />
 
                 <div className="flex justify-center gap-4 pt-4">
-                  <button className="proposal-button text-xl px-8 py-3">
+                  <button 
+                    className="proposal-button text-xl px-8 py-3"
+                    onClick={() => setShowCelebration(true)}
+                  >
                     Yes! 💍
                   </button>
                 </div>
 
-                <p className="font-romantic text-xl text-muted-foreground mt-8 animate-fade-in" style={{ animationDelay: "1s" }}>
-                  Forever starts now... ❤️
-                </p>
+                {showCelebration && (
+                  <div className="mt-8 animate-scale-in">
+                    <p className="font-romantic text-3xl text-gold animate-fade-up">
+                      She said Yes! 🎉💍
+                    </p>
+                    <p className="font-romantic text-xl text-blush mt-4 animate-fade-up" style={{ animationDelay: "0.5s" }}>
+                      Forever begins with you, Lilly ❤️
+                    </p>
+                  </div>
+                )}
+
+                {!showCelebration && (
+                  <p className="font-romantic text-xl text-muted-foreground mt-8 animate-fade-in" style={{ animationDelay: "1s" }}>
+                    Forever starts now... ❤️
+                  </p>
+                )}
               </div>
             )}
           </div>
@@ -146,6 +164,9 @@ const ProposalReveal = () => {
 
       {/* Extra floating hearts when revealed */}
       {isRevealed && <FloatingHearts />}
+      
+      {/* Celebration confetti */}
+      {showCelebration && <ConfettiCelebration />}
     </section>
   );
 };
